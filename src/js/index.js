@@ -3,7 +3,7 @@ import fetchPackageInfo, { packageMemoizeInfo } from './fetchPackageInfo';
 import changeDepTree from './changeDepTree';
 
 
-const packageName = 'webpack';
+const packageName = 'mocha';
 
 const getSimpleInfo = (name) => {
   return fetch('https://api.npms.io/v2/package/' + name)
@@ -17,9 +17,13 @@ getSimpleInfo(packageName).then(data => {
 fetchPackageInfo(packageName).then(depTree => {
   console.log('package info with dep', depTree);
   console.log('memoize package info', packageMemoizeInfo);
-  const tree = changeDepTree(depTree, 'npm', 'downloads');
-  console.log('tree of package dep', tree);
-  diagram.render(tree);
+  if (depTree) {
+    const tree = changeDepTree(depTree, 'npm', 'downloads');
+    console.log('tree of package dep', tree);
+    diagram.render(tree);
+  } else {
+    console.log('package not found');
+  }
 });
 
 

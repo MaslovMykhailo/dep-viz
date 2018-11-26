@@ -3,7 +3,7 @@ const changeDepTree = (tree, condition1, condition2, withSize) => {
     name: tree.name,
     size: withSize ? tree[condition1][condition2] : undefined,
     condition: condition2,
-    children:tree.dependencies.map(depTree =>
+    children:tree.dependencies.filter(dep => dep).map(depTree =>
       changeDepTree(depTree, condition1, condition2, true)
     )
   }
