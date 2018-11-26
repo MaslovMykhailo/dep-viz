@@ -1,20 +1,24 @@
 import * as diagram from './diagram';
-import fetchPackageInfo from './fetchPackageInfo';
+import fetchPackageInfo, { packageMemoizeInfo } from './fetchPackageInfo';
 import changeDepTree from './changeDepTree';
+
+
+const packageName = 'webpack';
 
 const getSimpleInfo = (name) => {
   return fetch('https://api.npms.io/v2/package/' + name)
     .then(response => response.json())
 };
 
-getSimpleInfo('react').then(data => {
-  console.log(data);
+getSimpleInfo(packageName).then(data => {
+  console.log('package info from api', data);
 });
 
-fetchPackageInfo('react').then(depTree => {
-  console.log(depTree);
+fetchPackageInfo(packageName).then(depTree => {
+  console.log('package info with dep', depTree);
+  console.log('memoize package info', packageMemoizeInfo);
   const tree = changeDepTree(depTree, 'npm', 'downloads');
-  console.log(tree);
+  console.log('tree of package dep', tree);
   diagram.render(tree);
 });
 

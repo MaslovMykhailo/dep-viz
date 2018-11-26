@@ -1,11 +1,10 @@
-const packageMemoizeInfo = {};
+export const packageMemoizeInfo = {};
 
 const url = 'https://api.npms.io/v2/package/';
 
-const fetchPackageInfo = name => {
-  const fetchInfo = name => packageMemoizeInfo[name] ?
-    Promise.resolve(packageMemoizeInfo[name]) :
-    fetch(url + name)
+const fetchPackageInfo = name => packageMemoizeInfo[name] ?
+  Promise.resolve(packageMemoizeInfo[name]) :
+  fetch(url + name)
     .then(response => response.json())
     .then(data => {
       const { npm, metadata } = data.collected;
@@ -22,23 +21,18 @@ const fetchPackageInfo = name => {
         },
         npm: {
           dependentsCount: npm.dependentsCount,
-          downloads: npm.downloads[0].count
+          downloads: npm.downloads.reduce((res, d) => res + d.count, 0)
         },
       };
-      packageMemoizeInfo[name] = result;
-
       return Promise.resolve(result);
+    })
+    .then(result => {
+      return Promise.all(result.dependencies.map(depName => fetchPackageInfo(depName)))
+        .then(depList => {
+          const res = Object.assign({}, result, { dependencies: depList });
+          packageMemoizeInfo[name] = res;
+          return Promise.resolve(res);
+        });
     });
-
-  return fetchInfo(name).then(result => {
-    return Promise.all(result.dependencies.map(name => {
-      return packageMemoizeInfo[name] ?
-        Promise.resolve(packageMemoizeInfo[name]) :
-        fetchPackageInfo(name);
-    }))
-      .then(depList => Object.assign(packageMemoizeInfo[name], { dependencies: depList }));
-  });
-
-};
 
 export default fetchPackageInfo;
