@@ -56,7 +56,7 @@ export const createPackageInfoTree = name => {
       packageData = packageInfo;
       return Promise.all(packageInfo.dependencies.map(dep => {
         const timeoutFetchInfo = new Promise(resolve => {
-          setTimeout(() => { resolve(null) }, 10000);
+          setTimeout(() => { resolve(null) }, 15000);
         });
         return Promise.race([createPackageInfoTree(dep), timeoutFetchInfo]);
       }))

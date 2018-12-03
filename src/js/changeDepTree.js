@@ -1,9 +1,9 @@
-const changeDepTree = (tree, condition1, condition2, withSize) => {
+const changeDepTree = (node, condition1, condition2, withSize) => {
   return {
-    name: tree.name,
-    size: withSize ? tree[condition1][condition2] : undefined,
+    name: node.name,
+    size: withSize ? node[condition1][condition2] : undefined,
     condition: condition2,
-    children:tree.dependencies.filter(dep => dep).map(depTree =>
+    children: node.dependencies.map(depTree =>
       changeDepTree(depTree, condition1, condition2, true)
     )
   }
