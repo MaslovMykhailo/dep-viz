@@ -2,4 +2,12 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+@import "./main-container/main-container.css";
+@import "./logo-container/logo-container.css";
+@import "./file-load-container/file-load-container.css";
+@import "./diagram-container/diagram-container.css";

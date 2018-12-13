@@ -1,0 +1,22 @@
+.file-load-container {
+    padding: 4px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+input[type="file"] {
+    font-size: 22px;
+    transition: all 0.3s ease;
+}
+
+input[type="file"]:hover {
+    background: rgba(156, 39, 176, 0.2);
+}
+
+input[type="file"]:focus {
+    outline-color: rgb(156, 39, 176);
+}
+
+@import "./__github/file-load-container__github.css";
+@import "./_small-text/file-load-container_small-text.css";

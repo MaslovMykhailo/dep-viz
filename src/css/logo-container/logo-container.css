@@ -1,0 +1,9 @@
+.logo-container {
+    width: 556px;
+    margin: 8px;
+}
+
+@import "./__caption/logo-container__caption.css";
+@import "./__picture/logo-container__picture.css";
+@import "./__title/logo-container__title.css";
+@import "./__description/logo-container__description.css";

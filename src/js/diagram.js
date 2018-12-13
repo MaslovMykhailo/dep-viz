@@ -4,7 +4,7 @@ export const render = function(data) {
   const root = partition(data);
   root.each(d => d.current = d);
   
-  const width = 600;
+  const width = 540;
   const radius = width / 6;
   const format = d3.format(",d");
   const color = d3.scaleOrdinal().range(d3.quantize(d3.interpolateRainbow, data.children.length + 1));
@@ -69,7 +69,7 @@ export const render = function(data) {
   
   function clicked(p) {
     parent.datum(p.parent || root);
-    
+
     root.each(d => d.target = {
       x0: Math.max(0, Math.min(1, (d.x0 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI,
       x1: Math.max(0, Math.min(1, (d.x1 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI,
