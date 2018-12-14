@@ -6,7 +6,7 @@
 }
 
 input[type="file"] {
-    font-size: 22px;
+    font-size: 20px;
     transition: all 0.3s ease;
 }
 
@@ -19,4 +19,3 @@ input[type="file"]:focus {
 }
 
 @import "./__github/file-load-container__github.css";
-@import "./_small-text/file-load-container_small-text.css";

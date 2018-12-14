@@ -1,6 +1,6 @@
-import * as diagram from './diagram';
-import changeDepTree from './changeDepTree';
-import { createPackageInfoTree } from "./packageInfo";
+import * as diagram from '../diagram/actions';
+import changeDepTree from '../diagram/changeDepTree';
+import { createPackageInfoTree } from "../data/actions";
 
 function handleFileSelect(event) {
   const file = event.target.files[0];
@@ -30,4 +30,4 @@ function handleFileSelect(event) {
   reader.readAsText(file);
 }
 
-document.getElementById('file').addEventListener('change', handleFileSelect, false);
+document.getElementById('file').addEventListener('change', handleFileSelect);

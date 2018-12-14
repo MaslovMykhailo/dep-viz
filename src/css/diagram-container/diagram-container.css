@@ -3,4 +3,8 @@
     height: 556px;
     margin: 8px;
     padding: 8px;
+    opacity: 0;
+    transition: all 1.5s ease;
 }
+
+@import "./diagram/diagram.css";

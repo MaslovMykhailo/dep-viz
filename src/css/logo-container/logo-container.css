@@ -1,7 +1,10 @@
 .logo-container {
     width: 556px;
     margin: 8px;
+    height: 250px;
+    transition: all 1.5s ease;
 }
+
 
 @import "./__caption/logo-container__caption.css";
 @import "./__picture/logo-container__picture.css";

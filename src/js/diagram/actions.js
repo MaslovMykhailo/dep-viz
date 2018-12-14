@@ -1,4 +1,33 @@
 import * as d3 from 'd3';
+import diagram from './diagram';
+import { changeDepTree } from "../data/actions";
+
+export const enterToFrame = () => {
+  diagram.containerNode.classList.remove('_invisible');
+
+  return new Promise(resolve => {
+    setTimeout(() => {
+      diagram.containerNode.style.opacity = '1';
+      diagram.spinnerNode.style.opacity = '1';
+      resolve();
+    }, 10);
+  });
+};
+
+export const build = (tree) => {
+  diagram.spinnerNode.style.opacity = '0';
+  const dataTree = changeDepTree(tree, 'npm', 'downloads');
+
+  return new Promise(resolve => {
+    render(dataTree);
+    setTimeout(() => {
+      diagram.spinnerNode.classList.add('_invisible');
+      diagram.diagramNode.classList.remove('_invisible');
+      setTimeout(() => { diagram.diagramNode.style.opacity = '1' }, 10);
+      resolve(dataTree);
+    }, 1500);
+  });
+};
 
 export const render = function(data) {
   const root = partition(data);
@@ -127,4 +156,3 @@ export const render = function(data) {
 export const clear = () => {
   d3.selectAll("g").remove();
 };
-

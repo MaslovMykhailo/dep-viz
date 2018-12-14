@@ -1,6 +1,7 @@
 const url = 'https://api.npms.io/v2/package/';
 
-export const packageMemoizeInfo = new Map();
+import data from './data';
+const { packageMemoizeInfo } = data;
 
 export const fetchPackageInfo = name => {
   return fetch(url + name)
@@ -68,4 +69,22 @@ export const createPackageInfoTree = name => {
         return null;
       }
     });
+};
+
+export const buildTreeFromPackageData = packageData => {
+  return Promise.all(packageData.dependencies.map(dep => createPackageInfoTree(dep)))
+    .then(depList =>
+      Object.assign({}, packageData, { dependencies: depList })
+    )
+};
+
+export const changeDepTree = (node, condition1, condition2, withSize) => {
+  return {
+    name: node.name,
+    size: withSize ? node[condition1][condition2] : undefined,
+    condition: condition2,
+    children: node.dependencies.map(depTree =>
+      changeDepTree(depTree, condition1, condition2, true)
+    )
+  }
 };
