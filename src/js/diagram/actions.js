@@ -49,7 +49,7 @@ export const render = function(data) {
   const svg = d3.select("svg")
     .style("width", width + "px")
     .style("height", width + "px")
-    .style("font", "10px sans-serif");
+    .style("font", `10px "Roboto", sans-serif`);
   
   const g = svg.append("g")
     .attr("transform", `translate(${width / 2},${width / 2})`);

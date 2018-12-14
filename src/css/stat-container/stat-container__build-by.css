@@ -1,0 +1,12 @@
+.stat-container__build-by {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    color: rgba(0,0,0,.54);
+}
+
+.stat-container__build-by span {
+    margin: 0 5px;
+    font-weight: bold;
+    color: rgb(156, 39, 176);
+}

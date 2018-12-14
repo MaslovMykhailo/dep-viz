@@ -18,4 +18,4 @@ input[type="file"]:focus {
     outline-color: rgb(156, 39, 176);
 }
 
-@import "./__github/file-load-container__github.css";
+@import "file-load-container__github.css";

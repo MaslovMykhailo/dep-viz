@@ -4,4 +4,4 @@
     background-color: #EFEFEF;
 }
 
-@import "./_invizible/_invizible.css";
+@import "_invizible.css";

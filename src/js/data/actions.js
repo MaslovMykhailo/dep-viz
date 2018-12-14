@@ -13,12 +13,21 @@ export const fetchPackageInfo = name => {
     .then(data => {
       if (!data || data.code === 'NOT_FOUND') throw new Error();
 
-      const { npm, metadata } = data.collected;
-      const { dependencies } = metadata;
+      const { npm, metadata, github } = data.collected;
+      const { dependencies, description } = metadata;
       const { detail } = data.score;
+
+      let starsCount = undefined;
+      let forksCount = undefined;
+
+      if (github) {
+        starsCount = github.starsCount;
+        forksCount = github.forksCount;
+      }
 
       return {
         name,
+        description,
         dependencies: dependencies ? Object.keys(dependencies) : [],
         score: {
           quality: Math.round(detail.quality * 100),
@@ -29,6 +38,9 @@ export const fetchPackageInfo = name => {
           dependentsCount: npm.dependentsCount,
           downloads: npm.downloads[5].count
         },
+        github: {
+          starsCount, forksCount
+        }
       };
     })
     .catch(() => {});

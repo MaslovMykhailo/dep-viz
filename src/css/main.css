@@ -11,4 +11,7 @@ html, body {
 @import "./file-load-container/file-load-container.css";
 @import "./diagram-container/diagram-container.css";
 @import "./spinner/spinner.css";
+@import "./content-container/content-container.css";
+@import "./stat-container/stat-container.css";
+@import "./stat-table/stat-table.css";
 @import "./main-container/main-container.css";

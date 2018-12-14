@@ -12,6 +12,8 @@ const mainActionFlow = (projectData) => {
 
 const anotherActionFlow = () => { /* do nothing */ };
 
+data.fetchPackageInfo('redux').then(d => console.log(d)).catch(console.error);
+
 document
   .getElementById('file')
   .addEventListener('change', handleFileSelect(mainActionFlow, anotherActionFlow));

@@ -35,6 +35,73 @@
                 <i></i>
             </div>
         </div>
+        <div class="stat-container mdl-card mdl-shadow--2dp _invisible">
+            <div class="stat-container__package-name mdl-card__title">
+                <h2 class="mdl-card__title-text">Package name</h2>
+            </div>
+            <div class="stat-container__description mdl-card__supporting-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Aenan convallis.
+            </div>
+            <table class="stat-table mdl-data-table mdl-shadow--2dp">
+                <thead>
+                <tr>
+                    <th class="stat-table__head mdl-data-table__cell--non-numeric" colspan="2">Statistic</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="stat-table__item mdl-data-table__cell--non-numeric" colspan="2">npm</td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">downloads</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">dependents count</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td class="stat-table__item mdl-data-table__cell--non-numeric" colspan="2">github</td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">stats count</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">forks count</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td class="stat-table__item mdl-data-table__cell--non-numeric" colspan="2">score by npms</td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">quality</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">maintenance</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">popularity</td>
+                    <td>10</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="stat-container__build-by">
+                Build diagram by <span>downloads</span>
+                <button id="build-by-button"
+                        class="mdl-button mdl-js-button mdl-button--icon">
+                    <i class="material-icons">more_vert</i>
+                </button>
+                <ul class="mdl-menu mdl-menu--top-right mdl-js-menu mdl-js-ripple-effect"
+                    data-mdl-for="build-by-button">
+                    <li disabled class="mdl-menu__item">downloads</li>
+                    <li class="mdl-menu__item">dependents count</li>
+                </ul>
+            </div>
+        </div>
     </div>
     <div class="file-load-container mdl-card__actions mdl-card--border">
         <input type="file" id="file" name="file"/>
