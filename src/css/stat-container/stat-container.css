@@ -1,9 +1,12 @@
 .stat-container {
-    width: 350px;
+    width: 0;
+    height: 0;
     margin: 8px 8px 8px 0;
+    opacity: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: all 1.5s ease;
 }
 
 @import "./stat-container__description.css";

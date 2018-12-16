@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
 import diagram from './diagram';
 import { changeDepTree } from "../data/actions";
+import { updateStat } from "../statistic/actions";
 
 export const enterToFrame = () => {
   diagram.containerNode.classList.remove('_invisible');
@@ -10,22 +11,34 @@ export const enterToFrame = () => {
       diagram.containerNode.style.opacity = '1';
       diagram.spinnerNode.style.opacity = '1';
       resolve();
-    }, 10);
+    }, 15);
+  });
+};
+
+export const exitFromFrame = () => {
+  return new Promise(resolve => {
+    diagram.diagramNode.style.opacity = '0';
+    setTimeout(() => { resolve() }, 1500);
   });
 };
 
 export const build = (tree) => {
+  if (tree) {
+    diagram.dataTree = changeDepTree(tree, 'npm', 'downloads');
+  }
+
   diagram.spinnerNode.style.opacity = '0';
-  const dataTree = changeDepTree(tree, 'npm', 'downloads');
+  render(diagram.dataTree);
 
   return new Promise(resolve => {
-    render(dataTree);
     setTimeout(() => {
       diagram.spinnerNode.classList.add('_invisible');
       diagram.diagramNode.classList.remove('_invisible');
-      setTimeout(() => { diagram.diagramNode.style.opacity = '1' }, 10);
-      resolve(dataTree);
-    }, 1500);
+      setTimeout(() => {
+        diagram.diagramNode.style.opacity = '1';
+        resolve(diagram.dataTree);
+      }, 15);
+    }, 1600);
   });
 };
 
@@ -124,6 +137,8 @@ export const render = function(data) {
     }).transition(t)
       .attr("fill-opacity", d => +labelVisible(d.target))
       .attrTween("transform", d => () => labelTransform(d.current));
+
+    updateStat(p.data.name);
   }
   
   function partition (data) {

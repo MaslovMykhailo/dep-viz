@@ -1,5 +1,6 @@
 table.stat-table.mdl-data-table {
     margin: 0 16px;
+    transition: all 0.5s ease;
 }
 
 .stat-table.mdl-data-table tr {
