@@ -7,14 +7,14 @@ export const enterToFrame = () => {
     stat.statNode.style.height = 'auto';
     stat.statNode.style.width = '350px';
 
-    setTimeout(() => { resolve() }, 760);
+    setTimeout(() => { resolve() }, 750);
   });
 };
 
 export const exitFromFrame = () => {
   return new Promise(resolve => {
     stat.statNode.style.opacity = '0';
-    setTimeout(() => { resolve() }, 1000);
+    setTimeout(() => { resolve() }, 750);
   });
 };
 

@@ -3,7 +3,7 @@ import diagram from './diagram';
 import { changeDepTree } from "../data/actions";
 import { updateStat } from "../statistic/actions";
 
-export const enterToFrame = () => {
+export const enterContainerToFrame = () => {
   diagram.containerNode.classList.remove('_invisible');
 
   return new Promise(resolve => {
@@ -11,8 +11,13 @@ export const enterToFrame = () => {
       diagram.containerNode.style.opacity = '1';
       diagram.spinnerNode.style.opacity = '1';
       resolve();
-    }, 15);
+    }, 10);
   });
+};
+
+export const enterToFrame = () => {
+  diagram.diagramNode.style.opacity = '1';
+  return new Promise(resolve => { setTimeout(() => { resolve() }, 1500) });
 };
 
 export const exitFromFrame = () => {
@@ -34,11 +39,8 @@ export const build = (tree) => {
     setTimeout(() => {
       diagram.spinnerNode.classList.add('_invisible');
       diagram.diagramNode.classList.remove('_invisible');
-      setTimeout(() => {
-        diagram.diagramNode.style.opacity = '1';
-        resolve(diagram.dataTree);
-      }, 15);
-    }, 1600);
+      setTimeout(() => { resolve(diagram.dataTree) }, 10);
+    }, 1500);
   });
 };
 

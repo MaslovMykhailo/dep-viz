@@ -6,11 +6,14 @@ import * as stat from './statistic/actions';
 
 const mainActionFlow = (projectData) => {
   logo.exitFromFrame()
-    .then(() => diagram.enterToFrame())
+    .then(() => diagram.enterContainerToFrame())
     .then(() => data.buildTreeFromPackageData(projectData))
     .then(tree => diagram.build(tree))
     .then(() => stat.addDataToStat(projectData))
-    .then(() => stat.enterToFrame());
+    .then(() => {
+      stat.enterToFrame();
+      return diagram.enterToFrame();
+    });
 };
 
 const anotherActionFlow = () => { /* do nothing */ };
