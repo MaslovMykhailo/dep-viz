@@ -28,19 +28,16 @@ export const exitFromFrame = () => {
 };
 
 export const build = (tree) => {
-  if (tree) {
-    diagram.dataTree = changeDepTree(tree, 'npm', 'downloads');
-  }
+  diagram.dataTree = tree;
+  render(changeDepTree(tree, 'npm', 'downloads'));
 
   diagram.spinnerNode.style.opacity = '0';
-  render(diagram.dataTree);
-
   return new Promise(resolve => {
     setTimeout(() => {
       diagram.spinnerNode.classList.add('_invisible');
       diagram.diagramNode.classList.remove('_invisible');
       setTimeout(() => { resolve(diagram.dataTree) }, 10);
-    }, 1500);
+    }, 1510);
   });
 };
 
@@ -172,4 +169,13 @@ export const render = function(data) {
 
 export const clear = () => {
   d3.selectAll("g").remove();
+};
+
+export const rebuild = criterion => {
+  return exitFromFrame()
+    .then(() => {
+      clear();
+      return render(changeDepTree(diagram.dataTree, 'npm', criterion))
+    })
+    .then(() => enterToFrame());
 };

@@ -15,5 +15,6 @@ export default  {
     popularity: document.getElementById('popularity'),
     maintenance: document.getElementById('maintenance'),
     quality: document.getElementById('quality')
-  }
+  },
+  buildBy: document.getElementById('build-by')
 }

@@ -87,15 +87,17 @@
                 </tbody>
             </table>
             <div class="stat-container__build-by">
-                Build diagram by <span>downloads</span>
+                Build diagram by <span id="build-by-text">downloads</span>
                 <button id="build-by-button"
                         class="mdl-button mdl-js-button mdl-button--icon">
                     <i class="material-icons">more_vert</i>
                 </button>
                 <ul class="mdl-menu mdl-menu--top-right mdl-js-menu mdl-js-ripple-effect"
-                    data-mdl-for="build-by-button">
-                    <li disabled class="mdl-menu__item">downloads</li>
-                    <li class="mdl-menu__item">dependents count</li>
+                    data-mdl-for="build-by-button"
+                    id="build-by"
+                >
+                    <li disabled class="mdl-menu__item" data-criterion="downloads">downloads</li>
+                    <li class="mdl-menu__item" data-criterion="dependentsCount">dependents count</li>
                 </ul>
             </div>
         </div>

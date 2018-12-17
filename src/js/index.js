@@ -3,6 +3,7 @@ import * as data from './data/actions';
 import * as diagram from './diagram/actions';
 import * as logo from './logo/actions';
 import * as stat from './statistic/actions';
+import './statistic/onClickHandlers';
 
 const mainActionFlow = (projectData) => {
   logo.exitFromFrame()
@@ -17,8 +18,6 @@ const mainActionFlow = (projectData) => {
 };
 
 const anotherActionFlow = () => { /* do nothing */ };
-
-data.fetchPackageInfo('redux').then(d => console.log(d)).catch(console.error);
 
 document
   .getElementById('file')
