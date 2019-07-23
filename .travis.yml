@@ -1,0 +1,7 @@
+landuage: node_js
+
+install: yarn install
+
+before_script: yarn run test
+
+script: yarn run build
